@@ -29,7 +29,7 @@ The modules are structured to progressively introduce core architectural concept
 | **CPP 02** | Ad-hoc Polymorphism, Operator Overloading | Fixed-point arithmetic implementation. |
 | **CPP 03** | Inheritance | Code reuse and memory layout of derived classes. |
 | **CPP 04** | Subtype Polymorphism, Abstract Classes | Virtual destructors, deep copies, Interface design. |
-| **CPP 05** | Exceptions (Try/Catch) | Stack unwinding, error propagation, rigidity of implementation. |
+| **CPP 05** | Exceptions (Try/Catch) | Stack unwinding, error propagation, rigidity of implementation. (Work in Progress) |
 | **CPP 06** | Serialization & Casting | `reinterpret_cast` (bit manipulation), `dynamic_cast` (RTTI). |
 | **CPP 07** | Templates | Generic programming, separating interface from implementation in headers. |
 | **CPP 08** | STL Containers & Iterators | Vector, List, Deque, Map efficiency and algorithmic complexity. |
