@@ -2,7 +2,7 @@
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
-
+#include "PresidentialPardonForm.hpp"
 
 
 static void    shruberry_tests();
@@ -149,7 +149,7 @@ static void    robo_tests()
 
     claudio.setGrade(138);
 
-    //  ######### ERROR  : THE EXEC GRADE IS 45, MINIMUM IS 137
+    //  ######### ERROR  : THE EXEC GRADE IS 138, MINIMUM IS 45
     try
     {
         form_robo.execute(claudio);
@@ -165,13 +165,13 @@ static void    robo_tests()
 
 static void    president_tests()
 {
-    ShrubberyCreationForm form_shrubbery("hola");
-    Bureaucrat jimmy("Jimmy", 20);
+    PresidentialPardonForm form_presi("hola");
+    Bureaucrat federico("Federico", 20);
 
     //  ######### ERROR : THE FORM IS NOT SIGNED
     try
     {
-        form_shrubbery.execute(jimmy);
+        form_presi.execute(federico);
         std::cout << "...." << std::endl;
     }
     catch (std::exception &e)
@@ -180,12 +180,12 @@ static void    president_tests()
     }
     std::cout << "-------------------------------------" << std::endl;
 
-    jimmy.setGrade(146);
-     //  ######### ERROR  : THE SIGN GRADE IS 138, MINIMUM IS 137
+    federico.setGrade(146);
+     //  ######### ERROR  : THE SIGN GRADE IS 146, MINIMUM IS 25
     try
     {
-        jimmy.signForm(form_shrubbery);
-        form_shrubbery.execute(jimmy);
+        federico.signForm(form_presi);
+        form_presi.execute(federico);
         std::cout << "...." << std::endl;
     }
     catch (std::exception &e)
@@ -194,12 +194,12 @@ static void    president_tests()
     }
     std::cout << "-------------------------------------" << std::endl;
 
-    jimmy.setGrade(20);
+    federico.setGrade(3);
     //  ######### VALID : THE GRADE IS OK and FORM IS SIGNED
     try
     {
-        jimmy.signForm(form_shrubbery);
-        form_shrubbery.execute(jimmy);
+        federico.signForm(form_presi);
+        form_presi.execute(federico);
         std::cout << "...." << std::endl;
     }
     catch (std::exception &e)
@@ -208,12 +208,12 @@ static void    president_tests()
     }
     std::cout << "-------------------------------------" << std::endl;
 
-    jimmy.setGrade(138);
+    federico.setGrade(138);
 
-    //  ######### ERROR  : THE EXEC GRADE IS 138, MINIMUM IS 137
+    //  ######### ERROR  : THE EXEC GRADE IS 138, MINIMUM IS 5
     try
     {
-        form_shrubbery.execute(jimmy);
+        form_presi.execute(federico);
         std::cout << "...." << std::endl;
     }
     catch (std::exception &e)

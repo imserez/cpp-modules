@@ -1,4 +1,0 @@
-- Finish ex02 with other classes
-- Verify everything is fine
-- Add tests at main
-- Verify again!
