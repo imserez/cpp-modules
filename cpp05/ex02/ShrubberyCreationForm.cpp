@@ -2,6 +2,8 @@
 
 #include <exception>
 #include <ostream>
+#include <iostream>
+#include <fstream>
 
 ShrubberyCreationForm::ShrubberyCreationForm()
     : AForm("unnamed Shruberry", 145, 137) {};
@@ -30,8 +32,31 @@ std::string ShrubberyCreationForm::getTarget(void) const
 
 void  ShrubberyCreationForm::executeAction(void)
 {
-    // try to open file
-    // write in it, catch, declare new excepts
+    try {
+        std::ofstream file(this->getTarget());
+
+        if (file)
+        {
+            file << "   *   \n";
+            file << "  ***  \n";
+            file << " ***** \n";
+            file << "   '   \n";
+
+            file.close();
+        }
+        else
+            throw AForm::ErrorOpeningFileException();
+
+    } catch (const  AForm::ErrorOpeningFileException &e){
+        std::cout << this->getName() << " couldn't execute " << this->getName();
+        std::cout << " because: " << e.what() << std::endl;
+        std::cout << " details: " << e.details(this->getTarget()) << std::endl;
+    }
+    catch (std::exception &e)
+    {
+        std::cout << this->getName() << " couldn't execute " << this->getName();
+        std::cout << " because: " << e.what() << std::endl;
+    }
 }
 
 

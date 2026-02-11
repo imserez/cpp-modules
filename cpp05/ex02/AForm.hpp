@@ -5,6 +5,9 @@
 #include <sstream>
 
 class AForm {
+
+  private:
+
   protected:
     const std::string _name;
     bool        _signed;
@@ -58,6 +61,21 @@ class AForm {
             {
                 std::ostringstream oss;
                 oss << "The form: " << name << " is not signed!";
+                return oss.str();
+            }
+    };
+
+    class ErrorOpeningFileException : public std::exception {
+        public:
+            virtual const char* what() const throw()
+            {
+                return "Exception error opening the file";
+            }
+
+            std::string const details(std::string filename) const throw()
+            {
+                std::ostringstream oss;
+                oss << "Error opening the file: " << filename;
                 return oss.str();
             }
     };
