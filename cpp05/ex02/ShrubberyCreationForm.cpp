@@ -33,32 +33,19 @@ std::string ShrubberyCreationForm::getTarget(void) const
 
 void  ShrubberyCreationForm::executeAction(std::string bureucratName)
 {
-    try {
-        std::ofstream file((this->getTarget() + std::string("_shrubbery")).c_str());
+    std::ofstream file((this->getTarget() + std::string("_shrubbery")).c_str());
 
-        if (file)
-        {
-            file << "   *   \n";
-            file << "  ***  \n";
-            file << " ***** \n";
-            file << "   '   \n";
-
-            file.close();
-            std::cout << bureucratName << " executed " << this->getName() << std::endl;
-        }
-        else
-            throw AForm::ErrorOpeningFileException();
-
-    } catch (const  AForm::ErrorOpeningFileException &e){
-        std::cout << this->getName() << " couldn't execute " << this->getName();
-        std::cout << " because: " << e.what() << std::endl;
-        std::cout << " details: " << e.details(this->getTarget()) << std::endl;
-    }
-    catch (std::exception &e)
+    if (file)
     {
-        std::cout << this->getName() << " couldn't execute " << this->getName();
-        std::cout << " because: " << e.what() << std::endl;
+        file << "   *   \n";
+        file << "  ***  \n";
+        file << " ***** \n";
+        file << "   '   \n";
+        file.close();
+        std::cout << bureucratName << " executed " << this->getName() << std::endl;
     }
+    else
+        throw ShrubberyCreationForm::ErrorOpeningFileException();
 }
 
 
