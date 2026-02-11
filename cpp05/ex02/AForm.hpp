@@ -90,7 +90,7 @@ class AForm {
     bool  beSigned(const Bureaucrat &obj);
 
     void execute(Bureaucrat const & executor);
-    virtual void executeAction() = 0;
+    virtual void executeAction(std::string bureaucratName) = 0;
 };
 
 std::ostream& operator<<(std::ostream &os, const AForm &obj);

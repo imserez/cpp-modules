@@ -4,6 +4,7 @@
 #include <ostream>
 #include <iostream>
 #include <fstream>
+#include <string>
 
 ShrubberyCreationForm::ShrubberyCreationForm()
     : AForm("unnamed Shruberry", 145, 137) {};
@@ -30,10 +31,10 @@ std::string ShrubberyCreationForm::getTarget(void) const
   return this->_target;
 }
 
-void  ShrubberyCreationForm::executeAction(void)
+void  ShrubberyCreationForm::executeAction(std::string bureucratName)
 {
     try {
-        std::ofstream file(this->getTarget());
+        std::ofstream file((this->getTarget() + std::string("_shrubbery")).c_str());
 
         if (file)
         {
@@ -43,6 +44,7 @@ void  ShrubberyCreationForm::executeAction(void)
             file << "   '   \n";
 
             file.close();
+            std::cout << bureucratName << " executed " << this->getName() << std::endl;
         }
         else
             throw AForm::ErrorOpeningFileException();

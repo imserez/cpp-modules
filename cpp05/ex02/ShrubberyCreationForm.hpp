@@ -15,7 +15,7 @@ class ShrubberyCreationForm : public AForm {
     ShrubberyCreationForm(const ShrubberyCreationForm &obj);
     ShrubberyCreationForm& operator=(const ShrubberyCreationForm &obj);
 
-    void executeAction(void);
+    void executeAction(std::string bureucratName);
     std::string getTarget(void) const;
 };
 
