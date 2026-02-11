@@ -7,7 +7,7 @@
 #include <string>
 #include <sstream>
 
-class Form;
+class AForm;
 
 class Bureaucrat {
 
@@ -57,7 +57,7 @@ class Bureaucrat {
     void    incrementGrade(void);
     void    decrementGrade(void);
 
-    void    signForm(Form &form);
+    void    signForm(AForm &AForm);
 
 };
 

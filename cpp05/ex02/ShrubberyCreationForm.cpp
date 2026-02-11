@@ -1,26 +1,18 @@
-#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 #include <exception>
 #include <ostream>
 
-ShrubberyCreationForm::ShrubberyCreationForm() : _name("unnamed ShrubberyCreationForm"), _signed(0), _requiredSignGrade(1), _requiredExecGrade(1) {};
+ShrubberyCreationForm::ShrubberyCreationForm()
+    : AForm("unnamed Shruberry", 145, 137) {};
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 0, 145, 137) 
-{
-  this->_target = target;
-};
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
+    : AForm("Shruberry", 145, 137), _target(target) {};
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {};
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &obj) : _name(obj.getName()),
-    _signed(obj.isSigned()),
-    _requiredSignGrade(obj.getRequiredSignGrade()),
-   _requiredExecGrade(obj.getRequiredExecGrade()),
-   _target(obj.getTarget())
-{
-    checkGrade(obj.getRequiredSignGrade());
-    checkGrade(obj.getRequiredExecGrade());
-}
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &obj)
+    : AForm(obj), _target(obj.getTarget()) {}
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm &obj)
 {
@@ -36,7 +28,7 @@ std::string ShrubberyCreationForm::getTarget(void) const
   return this->_target;
 }
 
-void  ShrubberyCreationForm::execute(Bureaucrat const & executor)
+void  ShrubberyCreationForm::executeAction(void)
 {
 
 }

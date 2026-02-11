@@ -56,7 +56,8 @@ class AForm {
     int   getRequiredExecGrade(void) const;
     bool  beSigned(const Bureaucrat &obj);
 
-    virtual void execute(Bureaucrat const & executor);
+    void execute(Bureaucrat const & executor);
+    virtual void executeAction() = 0;
 };
 
 std::ostream& operator<<(std::ostream &os, const AForm &obj);

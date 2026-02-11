@@ -59,25 +59,25 @@ std::ostream& operator<<(std::ostream &os, const Bureaucrat &obj)
     os << obj.getName() << ", grade " << obj.getGrade();
     return (os);
 }
-void    Bureaucrat::signForm(Form &form)
+void    Bureaucrat::signForm(AForm &AForm)
 {
     try {
-        form.beSigned(*this);
-        std::cout << this->getName() << " signed " << form.getName() << std::endl;
+        AForm.beSigned(*this);
+        std::cout << this->getName() << " signed " << AForm.getName() << std::endl;
     }
-    catch (const Form::GradeTooHighException& e)
+    catch (const AForm::GradeTooHighException& e)
     {
-        std::cout << this->getName() << " couldn't sign " << form.getName();
+        std::cout << this->getName() << " couldn't sign " << AForm.getName();
         std::cout << " because: " << e.what() << " detailed: " << e.details(this->getGrade()) << std::endl;
     }
-    catch (const Form::GradeTooLowException& e)
+    catch (const AForm::GradeTooLowException& e)
     {
-        std::cout << this->getName() << " couldn't sign " << form.getName();
+        std::cout << this->getName() << " couldn't sign " << AForm.getName();
         std::cout << " because: " << e.what() << " detailed: " << e.details(this->getGrade()) << std::endl;
     }
     catch (std::exception &e)
     {
-        std::cout << this->getName() << " couldn't sign " << form.getName();
+        std::cout << this->getName() << " couldn't sign " << AForm.getName();
         std::cout << " because: " << e.what() << std::endl;
     }
 }

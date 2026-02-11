@@ -1,5 +1,5 @@
 NAME		:= ex02
-SRCS		:= main.cpp Bureaucrat.cpp Form.cpp
+SRCS		:= main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp
 OBJS		:= $(SRCS:.cpp=.o)
 DEPS		:= $(OBJS:.o=.d)
 

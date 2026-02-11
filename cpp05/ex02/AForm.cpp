@@ -77,6 +77,12 @@ int   AForm::getRequiredExecGrade(void) const
     return _requiredExecGrade;
 }
 
+void    AForm::execute(Bureaucrat const & executor)
+{
+
+}
+
+
 std::ostream& operator<<(std::ostream &os, const AForm &obj)
 {
     os << obj.getName() << ", signed: " << obj.isSigned();
