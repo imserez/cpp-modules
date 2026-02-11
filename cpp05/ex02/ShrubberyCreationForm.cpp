@@ -30,7 +30,8 @@ std::string ShrubberyCreationForm::getTarget(void) const
 
 void  ShrubberyCreationForm::executeAction(void)
 {
-
+    // try to open file
+    // write in it, catch, declare new excepts
 }
 
 

@@ -47,6 +47,21 @@ class AForm {
             }
     };
 
+    class NotSignedFormException : public std::exception {
+        public:
+            virtual const char* what() const throw()
+            {
+                return "Exception form not signed";
+            }
+
+            std::string const details(std::string name) const throw()
+            {
+                std::ostringstream oss;
+                oss << "The form: " << name << " is not signed!";
+                return oss.str();
+            }
+    };
+
     std::string getName(void) const;
 
     void  checkGrade(const int grade);
