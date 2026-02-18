@@ -22,7 +22,7 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 {
     if (this != &obj)
     {
-        _signed = obj.isSigned();
+        AForm::operator=(obj);
     }
     return *this;
 }
@@ -34,17 +34,8 @@ std::string PresidentialPardonForm::getTarget(void) const
 
 void  PresidentialPardonForm::executeAction(std::string bureucratName) const
 {
-    int random;
-
-    random = rand() % 2;
-    if (random == 1)
-    {
-        std::cout << "rRr RrR uUu .... ººº...ºº---ºº. " << this->getTarget();
-        std::cout << " has been robotomized successfully!" << std::endl;
-        std::cout << bureucratName << " executed " << this->getName() << std::endl;
-    }
-    else
-        throw PresidentialPardonForm::RobotizationFailedException();
+    (void) bureucratName;
+    std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }
 
 

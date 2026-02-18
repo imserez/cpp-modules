@@ -54,3 +54,15 @@ AForm* Intern::makeForm(std::string formName, std::string target) {
     }
     throw Intern::InvalidNameException();
 }
+
+const char* Intern::InvalidNameException::what() const throw()
+{
+    return "Intern exception: Invalid form name passed.";
+}
+
+std::string const Intern::InvalidNameException::details(const std::string value) const throw()
+{
+    std::ostringstream oss;
+    oss << "The form name '" << value << "' does not exist.";
+    return oss.str();
+}

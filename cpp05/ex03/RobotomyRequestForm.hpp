@@ -20,10 +20,7 @@ class RobotomyRequestForm : public AForm {
 
     class RobotizationFailedException : public std::exception {
         public:
-            virtual const char* what() const throw()
-            {
-                return "Exception robotization failed!";
-            }
+            virtual const char* what() const throw();
     };
 };
 

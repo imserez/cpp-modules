@@ -24,30 +24,13 @@ class Bureaucrat {
 
     class GradeTooHighException : public std::exception {
         public:
-            virtual const char* what() const throw()
-            {
-                return "Exception value too high";
-            }
-
-            std::string const details(const int value) const throw()
-            {
-                std::ostringstream oss;
-                oss << "The value: " << value << " is too high!";
-                return oss.str();
-            }
+            virtual const char* what() const throw();
+            std::string const details(const int value) const throw();
     };
     class GradeTooLowException : public std::exception {
         public:
-            virtual const char* what() const throw()
-            {
-                return "Exception value too low";
-            }
-            std::string const details(const int value) const throw()
-            {
-                std::ostringstream oss;
-                oss << "The value: " << value << " is too low!";
-                return oss.str();
-            }
+            virtual const char* what() const throw();
+            std::string const details(const int value) const throw();
     };
 
     std::string getName(void) const;
@@ -57,7 +40,7 @@ class Bureaucrat {
     void    incrementGrade(void);
     void    decrementGrade(void);
 
-    void    signForm(AForm &AForm);
+    void    signForm(AForm &form);
     void    executeForm(AForm const &form);
 };
 

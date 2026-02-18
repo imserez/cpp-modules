@@ -21,16 +21,7 @@ class Intern {
     
     class InvalidNameException : public std::exception {
         public:
-            virtual const char* what() const throw()
-            {
-                return "Invalid form request name";
-            }
-
-            std::string const details(const std::string value) const throw()
-            {
-                std::ostringstream oss;
-                oss << "The name: " << value << " does not exist!";
-                return oss.str();
-            }
+            virtual const char* what() const throw();
+            std::string const details(const std::string value) const throw();
     };
 };

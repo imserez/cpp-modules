@@ -55,3 +55,8 @@ std::ostream& operator<<(std::ostream &os, const RobotomyRequestForm &obj)
     os << " ,required exec grade: " << obj.getRequiredExecGrade();
     return (os);
 }
+
+const char* RobotomyRequestForm::RobotizationFailedException::what() const throw()
+{
+    return "Robotomy failed: The drilling noise was unbearable, but the robotomy failed.";
+}

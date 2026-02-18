@@ -17,14 +17,6 @@ class PresidentialPardonForm : public AForm {
 
     void executeAction(std::string bureucratName) const;
     std::string getTarget(void) const;
-
-    class RobotizationFailedException : public std::exception {
-        public:
-            virtual const char* what() const throw()
-            {
-                return "Exception PresidentialPardonForm failed!";
-            }
-    };
 };
 
 std::ostream& operator<<(std::ostream &os, const AForm &obj);

@@ -59,25 +59,25 @@ std::ostream& operator<<(std::ostream &os, const Bureaucrat &obj)
     os << obj.getName() << ", grade " << obj.getGrade();
     return (os);
 }
-void    Bureaucrat::signForm(AForm &AForm)
+void    Bureaucrat::signForm(AForm &form)
 {
     try {
-        AForm.beSigned(*this);
-        std::cout << this->getName() << " signed " << AForm.getName() << std::endl;
+        form.beSigned(*this);
+        std::cout << this->getName() << " signed " << form.getName() << std::endl;
     }
     catch (const AForm::GradeTooHighException& e)
     {
-        std::cout << this->getName() << " couldn't sign " << AForm.getName();
+        std::cout << this->getName() << " couldn't sign " << form.getName();
         std::cout << " because: " << e.what() << std::endl;
     }
     catch (const AForm::GradeTooLowException& e)
     {
-        std::cout << this->getName() << " couldn't sign " << AForm.getName();
+        std::cout << this->getName() << " couldn't sign " << form.getName();
         std::cout << " because: " << e.what() << std::endl;
     }
     catch (std::exception &e)
     {
-        std::cout << this->getName() << " couldn't sign " << AForm.getName();
+        std::cout << this->getName() << " couldn't sign " << form.getName();
         std::cout << " because: " << e.what() << std::endl;
     }
 }
@@ -94,4 +94,28 @@ void Bureaucrat::executeForm(AForm const & form)
         std::cout << this->getName() << " couldn't execute " << form.getName() 
                   << " because " << e.what() << std::endl;
     }
+}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw()
+{
+    return "Exception value too high";
+}
+
+std::string const Bureaucrat::GradeTooHighException::details(const int value) const throw()
+{
+    std::ostringstream oss;
+    oss << "The value: " << value << " is too high!";
+    return oss.str();
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw()
+{
+    return "Exception value too low";
+}
+
+std::string const Bureaucrat::GradeTooLowException::details(const int value) const throw()
+{
+    std::ostringstream oss;
+    oss << "The value: " << value << " is too low!";
+    return oss.str();
 }
