@@ -32,7 +32,7 @@ std::string RobotomyRequestForm::getTarget(void) const
   return this->_target;
 }
 
-void  RobotomyRequestForm::executeAction(std::string bureucratName)
+void  RobotomyRequestForm::executeAction(std::string bureucratName) const
 {
     int random;
 

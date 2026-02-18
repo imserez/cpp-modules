@@ -81,3 +81,27 @@ void    Bureaucrat::signForm(Form &form)
         std::cout << " because: " << e.what() << std::endl;
     }
 }
+
+const char* Bureaucrat::GradeTooHighException::what() const throw()
+{
+    return "Exception value too high";
+}
+
+std::string const Bureaucrat::GradeTooHighException::details(const int value) const throw()
+{
+    std::ostringstream oss;
+    oss << "The value: " << value << " is too high!";
+    return oss.str();
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw()
+{
+    return "Exception value too low";
+}
+
+std::string const Bureaucrat::GradeTooLowException::details(const int value) const throw()
+{
+    std::ostringstream oss;
+    oss << "The value: " << value << " is too low!";
+    return oss.str();
+}

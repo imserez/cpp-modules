@@ -2,10 +2,15 @@
 
 # include <iostream>
 # include "AForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 class Intern {
     private:
-
+        static AForm* makeRobotomy(const std::string target);
+        static AForm* makePresidential(const std::string target);
+        static AForm* makeShrubbery(const std::string target);
     public:
         Intern();
         ~Intern();
@@ -14,7 +19,7 @@ class Intern {
         
         AForm* makeForm(std::string formName, std::string targetForm);
     
-    class InvalidName : public std::exception {
+    class InvalidNameException : public std::exception {
         public:
             virtual const char* what() const throw()
             {

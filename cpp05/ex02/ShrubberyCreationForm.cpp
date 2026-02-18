@@ -31,7 +31,7 @@ std::string ShrubberyCreationForm::getTarget(void) const
   return this->_target;
 }
 
-void  ShrubberyCreationForm::executeAction(std::string bureucratName)
+void  ShrubberyCreationForm::executeAction(std::string bureucratName) const
 {
     std::ofstream file((this->getTarget() + std::string("_shrubbery")).c_str());
 
@@ -55,4 +55,8 @@ std::ostream& operator<<(std::ostream &os, const ShrubberyCreationForm &obj)
     os << " ,required sign grade: " << obj.getRequiredSignGrade();
     os << " ,required exec grade: " << obj.getRequiredExecGrade();
     return (os);
+}
+
+const char* ShrubberyCreationForm::ErrorOpeningFileException::what() const throw() {
+    return "Shrubbery exception: Cannot open file";
 }

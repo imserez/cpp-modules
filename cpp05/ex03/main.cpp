@@ -63,7 +63,7 @@ int main(void)
             std::cout << rrf->getName() << "created successfully!" << std::endl;
             delete rrf;
         }
-        catch (Intern::InvalidName &e)
+        catch (Intern::InvalidNameException &e)
         {
             std::cout << "Exception caught: " << e.what() << std::endl;
             std::cout << "Exception details: " << e.details("francisco") << std::endl;

@@ -15,7 +15,7 @@ class PresidentialPardonForm : public AForm {
     PresidentialPardonForm(const PresidentialPardonForm &obj);
     PresidentialPardonForm& operator=(const PresidentialPardonForm &obj);
 
-    void executeAction(std::string bureucratName);
+    void executeAction(std::string bureucratName) const;
     std::string getTarget(void) const;
 
     class RobotizationFailedException : public std::exception {

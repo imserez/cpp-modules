@@ -77,7 +77,7 @@ int   AForm::getRequiredExecGrade(void) const
     return _requiredExecGrade;
 }
 
-void    AForm::execute(Bureaucrat const & executor)
+void    AForm::execute(Bureaucrat const & executor) const
 {
     if (executor.getGrade() > this->_requiredExecGrade)
     {
@@ -98,4 +98,18 @@ std::ostream& operator<<(std::ostream &os, const AForm &obj)
     os << " ,required sign grade: " << obj.getRequiredSignGrade();
     os << " ,required exec grade: " << obj.getRequiredExecGrade();
     return (os);
+}
+
+const char* AForm::GradeTooHighException::what() const throw() {
+    return "AForm exception: Grade too high";
+}
+
+
+const char* AForm::GradeTooLowException::what() const throw() {
+    return "AForm exception: Grade too low";
+}
+
+
+const char* AForm::NotSignedFormException::what() const throw() {
+    return "AForm exception: Form is not signed";
 }

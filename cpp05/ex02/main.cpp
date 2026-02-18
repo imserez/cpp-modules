@@ -4,6 +4,8 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
+#include <cstdlib>
+#include <ctime>
 
 static void    shruberry_tests();
 static void    robo_tests();
@@ -11,6 +13,7 @@ static void    president_tests();
 
 int main(void)
 {
+    std::srand(std::time(0));
     std::cout       << "*******************************************************" << std::endl;
     std::cout       << "***************** > SHRUBERRY TESTS < *****************" << std::endl;
     std::cout       << "*******************************************************" << std::endl << std::endl;

@@ -15,22 +15,12 @@ class ShrubberyCreationForm : public AForm {
     ShrubberyCreationForm(const ShrubberyCreationForm &obj);
     ShrubberyCreationForm& operator=(const ShrubberyCreationForm &obj);
 
-    void executeAction(std::string bureucratName);
+    void executeAction(std::string bureucratName) const;
     std::string getTarget(void) const;
 
     class ErrorOpeningFileException : public std::exception {
         public:
-            virtual const char* what() const throw()
-            {
-                return "Exception error opening the file";
-            }
-
-            std::string const details(std::string filename) const throw()
-            {
-                std::ostringstream oss;
-                oss << "Error opening the file: " << filename;
-                return oss.str();
-            }
+            virtual const char* what() const throw();
     };
 };
 

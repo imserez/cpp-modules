@@ -19,33 +19,16 @@ class Form {
   Form& operator=(const Form &obj);
 
     class GradeTooHighException : public std::exception {
-        public:
-            virtual const char* what() const throw()
-            {
-                return "Exception value too high";
-            }
+            public:
+                virtual const char* what() const throw();
+                std::string details(const int value) const; // Quitamos throw() aquí por seguridad con string
+        };
 
-            std::string const details(const int value) const throw()
-            {
-                std::ostringstream oss;
-                oss << "The value: " << value << " is too high!";
-                return oss.str();
-            }
-    };
-    class GradeTooLowException : public std::exception {
-        public:
-            virtual const char* what() const throw()
-            {
-                return "Exception value too low";
-            }
-
-            std::string const details(const int value) const throw()
-            {
-                std::ostringstream oss;
-                oss << "The value: " << value << " is too low!";
-                return oss.str();
-            }
-    };
+        class GradeTooLowException : public std::exception {
+            public:
+                virtual const char* what() const throw();
+                std::string details(const int value) const;
+        };
 
   std::string getName(void) const;
 

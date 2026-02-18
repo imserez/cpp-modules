@@ -84,3 +84,23 @@ std::ostream& operator<<(std::ostream &os, const Form &obj)
     os << " ,required exec grade: " << obj.getRequiredExecGrade();
     return (os);
 }
+
+const char* Form::GradeTooHighException::what() const throw() {
+    return "Form exception: Grade is too high";
+}
+
+std::string Form::GradeTooHighException::details(const int value) const {
+    std::ostringstream oss;
+    oss << "Grade " << value << " is too high for this form.";
+    return oss.str();
+}
+
+const char* Form::GradeTooLowException::what() const throw() {
+    return "Form exception: Grade is too low";
+}
+
+std::string Form::GradeTooLowException::details(const int value) const {
+    std::ostringstream oss;
+    oss << "Grade " << value << " is too low for this form.";
+    return oss.str();
+}

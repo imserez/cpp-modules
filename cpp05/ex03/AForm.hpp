@@ -23,46 +23,17 @@ class AForm {
 
     class GradeTooHighException : public std::exception {
         public:
-            virtual const char* what() const throw()
-            {
-                return "Exception value too high";
-            }
-
-            std::string const details(const int value) const throw()
-            {
-                std::ostringstream oss;
-                oss << "The value: " << value << " is too high!";
-                return oss.str();
-            }
+            virtual const char* what() const throw();
     };
+
     class GradeTooLowException : public std::exception {
         public:
-            virtual const char* what() const throw()
-            {
-                return "Exception value too low";
-            }
-
-            std::string const details(const int value) const throw()
-            {
-                std::ostringstream oss;
-                oss << "The value: " << value << " is too low!";
-                return oss.str();
-            }
+            virtual const char* what() const throw();
     };
 
     class NotSignedFormException : public std::exception {
         public:
-            virtual const char* what() const throw()
-            {
-                return "Exception form not signed";
-            }
-
-            std::string const details(std::string name) const throw()
-            {
-                std::ostringstream oss;
-                oss << "The form: " << name << " is not signed!";
-                return oss.str();
-            }
+            virtual const char* what() const throw();
     };
 
     std::string getName(void) const;
@@ -74,8 +45,8 @@ class AForm {
     int   getRequiredExecGrade(void) const;
     bool  beSigned(const Bureaucrat &obj);
 
-    void execute(Bureaucrat const & executor);
-    virtual void executeAction(std::string bureaucratName) = 0;
+    void execute(Bureaucrat const & executor) const;
+    virtual void executeAction(std::string bureaucratName) const = 0;
 };
 
 std::ostream& operator<<(std::ostream &os, const AForm &obj);

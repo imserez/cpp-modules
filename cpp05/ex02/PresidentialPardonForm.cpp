@@ -32,7 +32,7 @@ std::string PresidentialPardonForm::getTarget(void) const
   return this->_target;
 }
 
-void  PresidentialPardonForm::executeAction(std::string bureucratName)
+void  PresidentialPardonForm::executeAction(std::string bureucratName) const
 {
     int random;
 

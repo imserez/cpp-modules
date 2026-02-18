@@ -15,7 +15,7 @@ class RobotomyRequestForm : public AForm {
     RobotomyRequestForm(const RobotomyRequestForm &obj);
     RobotomyRequestForm& operator=(const RobotomyRequestForm &obj);
 
-    void executeAction(std::string bureucratName);
+    void executeAction(std::string bureucratName) const;
     std::string getTarget(void) const;
 
     class RobotizationFailedException : public std::exception {
