@@ -6,10 +6,7 @@ Serializer::~Serializer() { };
 
 Serializer& Serializer::operator=(const Serializer &obj)
 {
-    if (this != &obj)
-    {
-        *this = obj;
-    }
+    (void) obj;
     return *this;
 }
 uintptr_t Serializer::serialize (Data* ptr)
