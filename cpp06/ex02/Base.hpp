@@ -1,11 +1,12 @@
-#pragma once
+#ifndef BASE_HPP
+# define BASE_HPP
 
-Class Base {
+class Base {
 
     private:
 
     public:
-        Base();
-        virtual ~Base() = 0;
-
+        virtual ~Base();
 };
+
+#endif

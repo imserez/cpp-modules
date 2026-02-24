@@ -7,13 +7,12 @@
 class Serializer {
 
   private:
-
-  public:
     Serializer(void);
     Serializer(Serializer &obj);
     ~Serializer();
-
     Serializer &operator=(const Serializer &obj);
+  
+  public:  
     static uintptr_t serialize (Data* ptr);
     static Data *deserialize(uintptr_t raw);
 

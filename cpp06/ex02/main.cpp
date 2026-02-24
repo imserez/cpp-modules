@@ -1,46 +1,106 @@
-#include "Data.hpp"
-#include "Serializer.hpp"
+#include "Base.hpp"
+#include "A.hpp"
+#include "B.hpp"
+#include "C.hpp"
+
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+Base* generate(void);
+void identify(Base& p);
+void identify(Base* p);
+
+Base* generate(void)
+{
+    int randomNum = rand() % 3;
+    switch(randomNum) {
+        case 0:
+            return new A;
+            break;
+        case 1:
+            return new B;
+            break;
+        case 2:
+            return new C;
+            break;
+        default:
+            std::cout << "Error during number generation, number =" << randomNum << std::endl;
+            return NULL;
+    }
+}
+
+void identify(Base* p)
+{
+    if (dynamic_cast<A*>(p))
+    {
+         std::cout << "A" << std::endl;
+    } else if (dynamic_cast<B*>(p))
+    {
+         std::cout << "B" << std::endl;
+    } else if (dynamic_cast<C*>(p))
+    {
+         std::cout << "C" << std::endl;
+    } else
+    {
+         std::cout << "Unknown Base type pointer" << std::endl;
+    }
+}
+
+void identify(Base& p)
+{
+	try
+	{
+		A &a = dynamic_cast<A&>(p);
+		std::cout << "A" << std::endl;
+		(void)a;
+        return;
+	}
+	catch (std::exception &e) { }
+	try
+	{
+		B &b = dynamic_cast<B&>(p);
+		std::cout << "B" << std::endl;
+		(void)b;
+        return;
+	}
+	catch (std::exception &e) { }
+	try
+	{
+		C &c = dynamic_cast<C&>(p);
+		std::cout << "C" << std::endl;
+		(void)c;
+        return;
+	}
+	catch (std::exception &e) { }
+    std::cout << "Unknown Base type ref." << std::endl;
+}
+
 
 int main(void)
 {
-    Data test_data1;
-    test_data1.id = 1;
-    test_data1.name = "test1";
+    srand(time(0));
 
-    Data *ptr1 = &test_data1;
-    uintptr_t serialize_val = Serializer::serialize(ptr1);
-    Data* deserialize_val = Serializer::deserialize(serialize_val);
+    Base* gen1 = generate();
+    Base* gen2 = generate();
+    Base* gen3 = generate();
+    Base* gen4 = generate();
 
-    std::cout << "The memory address of Data* deserialize: " << deserialize_val << std::endl;
-    std::cout << "The memory address of &test_data deserialize: " << ptr1 << std::endl;
+    identify(gen1);
+    identify(gen2);
+    identify(gen3);
+    identify(gen4);
 
+    std::cout << " ---------------------------------- " << std::endl;
 
-    Data test_data2;
-    test_data2.id = 2;
-    test_data2.name = "test2";
+    identify((*gen1));
+    identify((*gen2));
+    identify((*gen3));
+    identify((*gen4));
 
-    std::cout << "-------------------------------------" << std::endl;
-
-    Data *ptr2 = &test_data2;
-    uintptr_t serialize_val2 = Serializer::serialize(ptr2);
-    Data* deserialize_val2 = Serializer::deserialize(serialize_val2);
-
-    std::cout << "The memory address of Data* deserialize: " << deserialize_val2 << std::endl;
-    std::cout << "The memory address of &test_data deserialize: " << ptr2 << std::endl;
-
-
-    Data test_data3;
-    test_data3.id = 2;  // testing with same id
-    test_data3.name = "test3";
-
-    std::cout << "-------------------------------------" << std::endl;
-
-    Data *ptr3 = &test_data3;
-    uintptr_t serialize_val3 = Serializer::serialize(ptr3);
-    Data* deserialize_val3 = Serializer::deserialize(serialize_val3);
-
-    std::cout << "The memory address of Data* deserialize: " << deserialize_val3 << std::endl;
-    std::cout << "The memory address of &test_data deserialize: " << ptr3 << std::endl;
+    delete gen1;
+    delete gen2;
+    delete gen3;
+    delete gen4;
     return (0);
 }
