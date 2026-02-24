@@ -3,9 +3,10 @@
 
 class ScalarConverter {
     private:
-
+        ScalarConverter();
+        ScalarConverter(const ScalarConverter& obj);
+        ScalarConverter& operator=(const ScalarConverter& obj);
+        ~ScalarConverter();
     public:
-        virtual ~ScalarConverter() = 0;
-
         static void convert(std::string literal);
 };
