@@ -1,10 +1,16 @@
-#pragma once
+#ifndef EASYFIND_HPP
+# define EASYFIND_HPP
 
 # include <algorithm>
 # include <exception>
 
 class NotFoundException : public std::exception {
     public:
+        NotFoundException() throw() {}
+        NotFoundException(const NotFoundException&) throw() {}
+        NotFoundException& operator=(const NotFoundException&) throw() { return *this; }
+        virtual ~NotFoundException() throw() {}
+
         virtual const char* what() const throw() {
             return "Error: element not found";
         }
@@ -19,3 +25,5 @@ typename T::iterator easyfind(T& container, int value) {
     }
     return it;
 }
+
+#endif // EASYFIND_HPP

@@ -7,7 +7,7 @@
 int main() {
     std::srand(std::time(0));
 
-    std::cout << "-------------------------------------" << std::endl;
+    std::cout << "-------------- 5 ---------------------" << std::endl;
     Span sp = Span(5);
     sp.addNumber(6);
     sp.addNumber(3);

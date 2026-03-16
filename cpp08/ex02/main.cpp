@@ -35,7 +35,7 @@ int main() {
 
 
     std::cout << "-------------------------------------" << std::endl;
-    std::cout << "-----------    LIST    --------------" << std::endl;
+    std::cout << "LIST " << std::endl;
     std::cout << "-------------------------------------" << std::endl;
 
     std::stack<int> s(mstack);
@@ -56,6 +56,18 @@ int main() {
     while (it2 != ite2) {
         std::cout << *it2 << std::endl;
         ++it2;
+    }
+
+    std::cout << "-------------------------------------" << std::endl;
+    std::cout << "REVERSE ITERATOR" << std::endl;
+    std::cout << "-------------------------------------" << std::endl;
+
+    MutantStack<int>::reverse_iterator rit = mstack.rbegin();
+    MutantStack<int>::reverse_iterator rite = mstack.rend();
+
+    while (rit != rite) {
+        std::cout << *rit << std::endl;
+        ++rit;
     }
 
     return 0;

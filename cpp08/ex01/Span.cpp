@@ -1,6 +1,5 @@
 #include "Span.hpp"
 
-#include "Span.hpp"
 #include <algorithm>
 #include <limits>
 

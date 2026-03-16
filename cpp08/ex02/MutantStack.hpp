@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MUTANT_STACK_HPP
+# define MUTANT_STACK_HPP
 
 # include <stack>
 # include <deque>
@@ -36,3 +37,5 @@ class MutantStack : public std::stack<T> {
         const_reverse_iterator rend() const { return this->c.rend(); }
 
 };
+
+#endif //MUTANT_STACK_HPP

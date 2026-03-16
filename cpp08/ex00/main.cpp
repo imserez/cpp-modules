@@ -28,5 +28,29 @@ int main() {
         std::cerr << e.what() << std::endl;
     }
 
+
+    std::cout << "-------------------------------------" << std::endl;
+
+    std::list<int> myList;
+    myList.push_back(1);
+    myList.push_back(2);
+    myList.push_back(3);
+
+    try {
+        int n1 = 2;
+        std::cout << n1 << std::endl;
+        std::list<int>::iterator it2 = easyfind(myList, n1);
+        std::cout << "Value found: " << *it2 << std::endl;
+        std::cout << "-------------------------------------" << std::endl;
+        int n2 = 5;
+        std::cout << n2 << std::endl;
+        easyfind(myList, n2);
+    } catch (const std::exception& e) {
+        std::cerr << e.what() << std::endl;
+    }
+
+    return 0;
+
+
     return 0;
 }

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef SPAN_HPP
+# define SPAN_HPP
 
 # include <vector>
 # include <iterator>
@@ -42,3 +43,5 @@ class Span {
             }
         };
 };
+
+#endif //SPAN_HPP
