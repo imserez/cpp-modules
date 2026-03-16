@@ -49,7 +49,13 @@ int main() {
     mlist.push_back(3);
     mlist.push_back(5);
     mlist.push_back(737);
+
+    mlist.push_back(32);
+    mlist.push_back(511);
+    mlist.push_back(672);
+
     mlist.push_back(0);
+    std::cout << "-------------------------------------" << std::endl;
 
     std::list<int>::iterator it2 = mlist.begin();
     std::list<int>::iterator ite2 = mlist.end();
