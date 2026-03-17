@@ -67,14 +67,16 @@ std::vector<int> PmergeMe::_generateJacobsthal(int n) const {
     if (n < 1) return jacob;
 
     jacob.push_back(0);
-    if (n == 1) return jacob;
+    if (n == 1)
+        return jacob;
     jacob.push_back(1);
 
     int i = 2;
     while (true) {
         int nextVal = jacob[i - 1] + 2 * jacob[i - 2];
         jacob.push_back(nextVal);
-        if (nextVal >= n) break;
+        if (nextVal >= n)
+            break;
         i++;
     }
     return jacob;
@@ -95,6 +97,7 @@ void PmergeMe::_sortVector(std::vector<int>& arr) {
     }
 
     std::vector<std::pair<int, int> > pairs;
+
     for (size_t i = 0; i < arr.size(); i += 2) {
         if (arr[i] > arr[i + 1])
             pairs.push_back(std::make_pair(arr[i], arr[i + 1]));
@@ -164,6 +167,7 @@ void PmergeMe::_sortDeque(std::deque<int>& arr) {
     }
 
     std::deque<std::pair<int, int> > pairs;
+
     for (size_t i = 0; i < arr.size(); i += 2) {
         if (arr[i] > arr[i + 1])
             pairs.push_back(std::make_pair(arr[i], arr[i + 1]));
