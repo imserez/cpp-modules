@@ -19,7 +19,7 @@ long PmergeMe::_getTimeMicro() const
 {
     struct timeval time;
     gettimeofday(&time, NULL);
-    return ((time.tv_sec * 1000000) + time.tv_usec);
+    return ((time.tv_sec * 1000000.0) + time.tv_usec);
 }
 
 void PmergeMe::_parseArguments(int argc, char** argv) {
