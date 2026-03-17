@@ -1,4 +1,5 @@
 #include "PmergeMe.hpp"
+#include <iomanip>
 
 PmergeMe::PmergeMe() {}
 
@@ -15,11 +16,11 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& other) {
 
 PmergeMe::~PmergeMe() {}
 
-long PmergeMe::_getTimeMicro() const
+double PmergeMe::_getTimeMicro() const
 {
     struct timeval time;
     gettimeofday(&time, NULL);
-    return ((time.tv_sec * 1000000.0) + time.tv_usec);
+    return (static_cast<double>(time.tv_sec) * 1000000.0) + static_cast<double>(time.tv_usec);
 }
 
 void PmergeMe::_parseArguments(int argc, char** argv) {
@@ -228,16 +229,17 @@ void PmergeMe::run(int argc, char** argv) {
 
     _printSequence("Before: ", _vec);
 
-    long timeVecStart = _getTimeMicro();
+    double timeVecStart = _getTimeMicro();
     _sortVector(_vec);
-    long timeVecEnd = _getTimeMicro();
+    double timeVecEnd = _getTimeMicro();
 
-    long timeDeqStart = _getTimeMicro();
+    double timeDeqStart = _getTimeMicro();
     _sortDeque(_deq);
-    long timeDeqEnd = _getTimeMicro();
+    double timeDeqEnd = _getTimeMicro();
 
     _printSequence("After:  ", _vec);
 
+    std::cout << std::fixed << std::setprecision(5);
     std::cout << "Time to process a range of " << _vec.size() << " elements with std::vector : ";
     std::cout << (timeVecEnd - timeVecStart) << " us" << std::endl;
 

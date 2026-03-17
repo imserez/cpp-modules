@@ -17,7 +17,7 @@ class PmergeMe {
 
         void _parseArguments(int argc, char** argv);
         void _printSequence(const std::string& prefix, const std::vector<int>& seq) const;
-        long _getTimeMicro() const;
+        double _getTimeMicro() const;
 
         std::vector<int> _generateJacobsthal(int n) const;
 
